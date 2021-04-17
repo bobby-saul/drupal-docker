@@ -1,0 +1,17 @@
+version: '3.1'
+services:
+  web:
+    build: .
+    ports:
+      - 8080:80
+    restart: always
+    # volumes:
+    #   - ./drupal:/var/www/drupal
+  db:
+    image: mysql
+    restart: always
+    environment:
+      MYSQL_RANDOM_ROOT_PASSWORD: '1'
+      MYSQL_DATABASE: drupal
+      MYSQL_USER: drupaluser
+      MYSQL_PASSWORD: password12345
