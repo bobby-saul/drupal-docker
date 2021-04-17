@@ -5,8 +5,8 @@ services:
     ports:
       - 8080:80
     restart: always
-    # volumes:
-    #   - ./drupal:/var/www/drupal
+    volumes:
+      - drupal:/var/www/drupal
   db:
     image: mysql
     restart: always
@@ -15,3 +15,8 @@ services:
       MYSQL_DATABASE: drupal
       MYSQL_USER: drupaluser
       MYSQL_PASSWORD: password12345
+    volumes:
+      - db:/var/lib/mysql
+volumes:
+  drupal:
+  db:
