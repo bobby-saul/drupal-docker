@@ -6,7 +6,8 @@ services:
       - 8080:80
     restart: always
     volumes:
-      - drupal:/var/www/drupal
+      - ./drupal:/var/www/drupal
+      - ./php.ini:/usr/local/etc/php/php.ini
   db:
     image: mysql
     restart: always
@@ -18,5 +19,4 @@ services:
     volumes:
       - db:/var/lib/mysql
 volumes:
-  drupal:
   db:

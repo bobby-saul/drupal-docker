@@ -1,19 +1,19 @@
-FROM php:7.4-apache
+FROM php:8.1-apache
 # Enable rewrite
 RUN a2enmod rewrite
 # Install git and packages for php extensions
 RUN apt update && apt install -y \
-    git \
-    libfreetype6-dev \
-    libjpeg62-turbo-dev \
-    libpng-dev \
-    libzip-dev \
+  git \
+  libfreetype6-dev \
+  libjpeg62-turbo-dev \
+  libpng-dev \
+  libzip-dev \
   && docker-php-ext-configure gd --with-freetype --with-jpeg \
   && docker-php-ext-install -j$(nproc) \
-		gd \
-		opcache \
-		pdo_mysql \
-		zip
+  gd \
+  opcache \
+  pdo_mysql \
+  zip
 # Install composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 # Install drupal
