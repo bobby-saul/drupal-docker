@@ -1,15 +1,27 @@
 # Docker Drupal
 
-Creates a Drupal instance running on a Php docker container and a MySQL docker
-container.
+Creates a Drupal instance running on a Drupal docker container and a MySQL
+docker container. The Drupal docker container is a local container built by the
+image in https://github.com/bobby-saul/drupal-image.
 
-The database host is ```db``` ran on port ```3306```. The user is
-```drupaluser``` and the password is ```password12345```.
+The database host is `db` ran on port `3306`. The user is `user` and the
+password is `password123`.
 
-The web service runs on port ```8080``` so the site is accessible at
+The web service runs on port `8080` so the site is accessible at
 http://localhost:8080/.
 
-Run the docker compose once to start the containers (```docker-compose up -d```).
-Set up the initial drupal site with the above info for the database.
-When the site is finished setting up, copy the containers directly to local machine (```docker cp drupal-docker_web_1:/var/www/drupal ./drupal```).
-Then edit the drupal volume in the docker-compose.yml to use the local machine path
+Start the docker containers
+```
+docker-compose up -d
+```
+
+To get a shell into the drupal container run:
+```
+docker exec -ti drupal-docker-web-1 /bin/bash
+```
+
+Get the logs of containers:
+```
+docker logs drupal-docker-web-1
+docker logs drupal-docker-web-1
+```

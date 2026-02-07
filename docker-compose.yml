@@ -1,22 +1,19 @@
 version: '3.1'
 services:
   web:
-    build: .
+    image: docker.localhost/drupal:11.3.2
     ports:
       - 8080:80
     restart: always
     volumes:
       - ./drupal:/var/www/drupal
-      - ./php.ini:/usr/local/etc/php/php.ini
-  db:
-    image: mysql
+  drupal-site-mysql:
+    image: mysql:8.4.8
     restart: always
     environment:
-      MYSQL_RANDOM_ROOT_PASSWORD: '1'
-      MYSQL_DATABASE: drupal
-      MYSQL_USER: drupaluser
-      MYSQL_PASSWORD: password12345
+      MYSQL_ROOT_PASSWORD: rootpassword123
+      MYSQL_DATABASE: drupal-site
+      MYSQL_USER: drupal
+      MYSQL_PASSWORD: password123
     volumes:
-      - db:/var/lib/mysql
-volumes:
-  db:
+      - ./mysql:/var/lib/mysql
