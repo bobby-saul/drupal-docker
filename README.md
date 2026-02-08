@@ -23,5 +23,5 @@ docker exec -ti drupal-docker-web-1 /bin/bash
 Get the logs of containers:
 ```
 docker logs drupal-docker-web-1
-docker logs drupal-docker-web-1
+docker logs drupal-docker-drupal-site-mysql-1
 ```

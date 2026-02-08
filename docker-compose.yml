@@ -16,4 +16,6 @@ services:
       MYSQL_USER: drupal
       MYSQL_PASSWORD: password123
     volumes:
-      - ./mysql:/var/lib/mysql
+      - drupal-mysql:/var/lib/mysql
+volumes:
+  drupal-mysql:
